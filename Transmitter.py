@@ -1,9 +1,8 @@
 import wave
-import numpy as np
 
 print("Open file...")
 with open("audio.bin", "rb") as bin_file:
-    data = bin_file.read()
+data = bin_file.read()
 n = 0
 while 2 ** n <= len(data) + n:
     n += 1
@@ -18,11 +17,11 @@ for i in range(len(data)):
 
 decoded_data = bytes(decoded_data)
 
+
 num_channels = 1  # Mono
 sample_width = 2  # 16-bit
 frame_rate = 44100  # sample rate
-num_frames = len(decoded_data) // (num_channels * sample_width)
-
+num_frames = len(audio_data) // (num_channels * sample_width)
 with wave.open("audio.wav", "wb") as wav_file:
     wav_file.setnchannels(num_channels)
     wav_file.setsampwidth(sample_width)

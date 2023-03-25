@@ -34,11 +34,11 @@ print("Saved as", WAVE_OUTPUT_FILENAME)
 print("Encode starting.... ")
 
 with wave.open("received_audio.wav", "rb") as wav_file:
-    channels = wav_file.getnchannels()
+    # Get parameters
+    num_channels = wav_file.getnchannels()
     sample_width = wav_file.getsampwidth()
     frame_rate = wav_file.getframerate()
     num_frames = wav_file.getnframes()
-
     wav_data = wav_file.readframes(num_frames)
     # convert the WAV data to a list of bytes
     wav_bytes = [wav_data[i:i + 2] for i in range(0, len(wav_data), 2)]
@@ -66,6 +66,7 @@ with wave.open("received_audio.wav", "rb") as wav_file:
         encoded_data[2 ** i - 1] = parity
     encoded_data_bytes = bytes([x % 256 for x in encoded_data])
 
+
 with open("audio.bin", "wb") as bin_file:
-    bin_file.write(encoded_data_bytes)
-print("Successful")
+    bin_file.write(binary_data)
+    print("Successful")
