@@ -41,7 +41,7 @@ with wave.open("received_audio.wav", "rb") as wav_file:
     num_frames = wav_file.getnframes()
 
     audio_data = wav_file.readframes(num_frames)
-
+#1
 binary_data = bytearray(audio_data)
 
 with open("audio.bin", "wb") as bin_file:
